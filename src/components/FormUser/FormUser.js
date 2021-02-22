@@ -114,7 +114,7 @@ class _FormUser extends React.Component {
                         } else {
                             this.props.addUser(currentUser);
                         }
-                        this.props.clearForm();
+                        this.props.clearInputs();
                     }}
                 >
                     Save
@@ -122,7 +122,7 @@ class _FormUser extends React.Component {
                 <button
                     onClick={() => {
                         this.props.removeUser(currentUser);
-                        this.props.clearForm();
+                        this.props.clearInputs();
                     }}
                     disabled={currentUser.id === ''}
                 >
@@ -146,5 +146,5 @@ export const FormUser = connect(mapStateToProps, {
     editUser: updateUser,
     removeUser: deleteUser,
     changeInput: editCurrentUser,
-    clearForm: clearCurrentUser,
+    clearInputs: clearCurrentUser,
 })(_FormUser);

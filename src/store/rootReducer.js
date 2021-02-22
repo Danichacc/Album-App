@@ -5,6 +5,7 @@ import {
     SET_USER,
     EDIT_USER,
     CLEAR_USER,
+    SET_ALBUM,
     TOKEN_USERS,
     TOKEN_ALBUMS,
     TOKEN_PHOTOS,
@@ -121,6 +122,12 @@ export function rootReducer(state = defaultState, action) {
                         bs: '',
                     }
                 }
+            }
+
+        case SET_ALBUM:
+            return {
+                ...state,
+                currentAlbum: action.payload,
             }
 
         default:

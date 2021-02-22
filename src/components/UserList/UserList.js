@@ -10,7 +10,7 @@ class _UserList extends React.Component {
         return (
             <div className='users-wrapper'>
                 {this.props.users.map((user, index) => (
-                    <Link to='/crud_user' key={index}>
+                    <Link to='/crud' key={index}>
                         <span
                             className='user'
                             onClick={() => this.props.setUser(user)}

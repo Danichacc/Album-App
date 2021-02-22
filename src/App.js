@@ -29,7 +29,7 @@ class _App extends React.Component {
                     <Route path='/users'>
                         <UserList />
                     </Route>
-                    <Route path='/crud_user'>
+                    <Route path='/crud'>
                         <FormUser />
                     </Route>
                 </Switch>

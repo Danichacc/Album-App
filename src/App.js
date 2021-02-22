@@ -4,9 +4,8 @@ import {AlbumList} from './components/AlbumList/AlbumList';
 import {UserList} from './components/UserList/UserList';
 import {FormUser} from './components/FormUser/FormUser';
 import {connect} from 'react-redux';
+import {fetchData, TOKEN_USERS, TOKEN_ALBUMS, TOKEN_PHOTOS} from './store/actions';
 import './App.css';
-import {fetchData} from './store/actions';
-import {TOKEN_USERS, TOKEN_ALBUMS, TOKEN_PHOTOS} from './store/actions';
 
 class _App extends React.Component {
     componentDidMount() {

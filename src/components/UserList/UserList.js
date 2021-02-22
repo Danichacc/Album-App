@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import './UserList.css';
 import {AddUserButton} from '../AddUserButton/AddUserButton';
 import {Link} from 'react-router-dom';
 import {setCurrentUser} from '../../store/actions';
+import './UserList.css';
 
 class _UserList extends React.Component {
     render() {

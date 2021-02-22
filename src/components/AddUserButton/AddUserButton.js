@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import './AddUserButton.css';
 import {clearCurrentUser} from '../../store/actions';
+import './AddUserButton.css';
 
 class _AddUserButton extends React.Component {
     render() {

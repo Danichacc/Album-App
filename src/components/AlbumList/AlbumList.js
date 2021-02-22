@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Switch, Route, Link} from 'react-router-dom';
-import './AlbumList.css';
 import {setCurrentAlbum} from '../../store/actions';
+import './AlbumList.css';
 
 class _AlbumList extends React.Component {
     findAuthor(index) {
@@ -25,7 +25,7 @@ class _AlbumList extends React.Component {
                                 <Link to={`/albums/${album.id}`}>
                                     <img
                                         src={this.props.photos.filter(photo => photo.albumId === album.id)
-                                            .map(photo => photo.thumbnailUrl)}
+                                                .map(photo => photo.thumbnailUrl)}
                                         alt='Whoops'
                                         onClick={() => this.props.pickAlbum(album)}
                                     />

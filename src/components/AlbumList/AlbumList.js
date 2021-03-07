@@ -54,7 +54,6 @@ class _AlbumList extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        users: state.fetchedData.users,
         albums: state.fetchedData.albums,
         photos: state.fetchedData.photos,
         currentAlbum: state.currentAlbum,

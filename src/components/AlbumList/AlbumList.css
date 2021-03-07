@@ -1,0 +1,30 @@
+.albums-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.album {
+    width: 405px;
+}
+
+.album-author {
+    font-weight: bold;
+}
+
+.album-title {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-family: 'Comic Sans MS', sans-serif;
+    font-style: italic;
+}
+
+.photo {
+    margin: 5px 0;
+}
+
+.photo:nth-child(odd) {
+    margin-right: 10px;
+}

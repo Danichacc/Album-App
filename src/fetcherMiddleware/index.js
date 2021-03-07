@@ -1,11 +1,9 @@
 import {
-    fetchData,
-    TOKEN_USERS,
     FETCH_DATA,
     ADD_DATA,
     EDIT_DATA,
     REMOVE_DATA,
-} from '../store/actions';
+} from '../store/fetchedData';
 
 export default function fetcherMiddleware({dispatch}) {
     return next => action => {
@@ -21,7 +19,7 @@ export default function fetcherMiddleware({dispatch}) {
                 .then(result => dispatch(success(result, url)))
                 .catch(error => dispatch(failure(error)));
         } else if (action.type === ADD_DATA || action.type === EDIT_DATA || action.type === REMOVE_DATA) {
-            const { url, failure, user } = action.payload;
+            const { url, failure, entity } = action.payload;
 
             fetch(url, {
                 method: action.type === ADD_DATA ? 'POST' :
@@ -29,10 +27,9 @@ export default function fetcherMiddleware({dispatch}) {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(user),
+                body: JSON.stringify(entity),
             }).then(response => response.json())
-                .catch(error => dispatch(failure(error)))
-                .then(() => dispatch(fetchData(TOKEN_USERS)));
+                .catch(error => dispatch(failure(error)));
         } else {
             result = next(action);
         }

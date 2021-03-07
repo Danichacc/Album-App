@@ -1,0 +1,12 @@
+.users-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.users-wrapper a {
+    text-decoration: none;
+}
+
+.user {
+    font-size: 24px;
+}

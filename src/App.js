@@ -3,42 +3,38 @@ import {Switch, Route, Link} from 'react-router-dom';
 import {AlbumList} from './components/AlbumList/AlbumList';
 import {UserList} from './components/UserList/UserList';
 import {FormUser} from './components/FormUser/FormUser';
-import {connect} from 'react-redux';
-import {fetchData, TOKEN_USERS, TOKEN_ALBUMS, TOKEN_PHOTOS} from './store/actions';
 import './App.css';
+import {ButtonGroup, Button} from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
 
-class _App extends React.Component {
-    componentDidMount() {
-        this.props.getData(TOKEN_USERS);
-        this.props.getData(TOKEN_ALBUMS);
-        this.props.getData(TOKEN_PHOTOS);
-    }
-
+class App extends React.Component {
     render() {
         return (
-            <div className='wrapper'>
-                <nav>
-                    <Link to='/albums'>Albums</Link>
-                    <Link to='/users'>Users</Link>
-                </nav>
-                <Switch>
-                    <Route path='/albums'>
-                        <AlbumList />
-                    </Route>
-                    <Route path='/users'>
-                        <UserList />
-                    </Route>
-                    <Route path='/crud'>
-                        <FormUser />
-                    </Route>
-                </Switch>
-            </div>
+            <React.Fragment>
+                <CssBaseline />
+                <Container style={{ backgroundColor: '#cfe8fc', height: '100vh', overflow: 'auto' }}>
+                    <nav>
+                        <ButtonGroup variant='contained' color='primary' aria-label='outlined primary button group'>
+                            <Button component={Link} to='/albums'>Albums</Button>
+                            <Button component={Link} to='/users'>Users</Button>
+                        </ButtonGroup>
+                    </nav>
+                    <Switch>
+                        <Route path='/albums'>
+                            <AlbumList />
+                        </Route>
+                        <Route path='/users'>
+                            <UserList />
+                        </Route>
+                        <Route path='/crud'>
+                            <FormUser />
+                        </Route>
+                    </Switch>
+                </Container>
+            </React.Fragment>
         );
     }
 }
-
-const App = connect(null, {
-    getData: fetchData,
-})(_App);
 
 export default App;

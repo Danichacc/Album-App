@@ -8,7 +8,6 @@ import {
     editCurrentUserGeo
 } from '../../store/currentUser';
 import {
-    fetchData,
     createEntity,
     updateEntity,
     deleteEntity,
@@ -199,7 +198,6 @@ function mapStateToProps(state) {
 }
 
 export const FormUser = connect(mapStateToProps, {
-    readData: fetchData,
     crudUser: crudEntity,
     changeInput: editCurrentUser,
     changeInputAddress: editCurrentUserAddress,

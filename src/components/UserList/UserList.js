@@ -3,23 +3,18 @@ import {connect} from 'react-redux';
 import {AddUserButton} from '../AddUserButton/AddUserButton';
 import {Link} from 'react-router-dom';
 import {setCurrentUser} from '../../store/currentUser';
-import {fetchData, TOKEN_USERS} from '../../store/fetchedData';
 import {Preloader} from '../Preloader/Preloader';
 import './UserList.css';
 
 class _UserList extends React.Component {
-    componentDidMount() {
-        this.props.getUsers(TOKEN_USERS);
-    }
-
     render() {
-        if (this.props.isFetching) {
+        if (this.props.fetchedData.isFetching) {
             return <Preloader />;
         }
 
         return (
             <div className='users-wrapper'>
-                {this.props.users.map((user, index) => (
+                {this.props.fetchedData.users.map((user, index) => (
                     <span
                         className='user'
                         key={index}
@@ -36,14 +31,4 @@ class _UserList extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        users: state.fetchedData.users,
-        isFetching: state.fetchedData.isFetching,
-    }
-}
-
-export const UserList = connect(mapStateToProps, {
-    getUsers: fetchData,
-    setUser: setCurrentUser,
-})(_UserList);
+export const UserList = connect(null, {setUser: setCurrentUser})(_UserList);

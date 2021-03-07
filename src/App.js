@@ -8,11 +8,13 @@ import {ButtonGroup, Button} from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import {connect} from 'react-redux';
-import {fetchData, TOKEN_USERS} from './store/fetchedData';
+import {fetchData, TOKEN_ALBUMS, TOKEN_PHOTOS, TOKEN_USERS} from './store/fetchedData';
 
 class _App extends React.Component {
     componentDidMount() {
-        this.props.getUsers(TOKEN_USERS);
+        this.props.getData(TOKEN_USERS);
+        this.props.getData(TOKEN_ALBUMS);
+        this.props.getData(TOKEN_PHOTOS);
     }
 
     render() {
@@ -28,10 +30,10 @@ class _App extends React.Component {
                     </nav>
                     <Switch>
                         <Route path='/albums'>
-                            <AlbumList users={this.props.users} />
+                            <AlbumList fetchedData={this.props.fetchedData} />
                         </Route>
                         <Route path='/users'>
-                            <UserList />
+                            <UserList fetchedData={this.props.fetchedData} />
                         </Route>
                         <Route path='/crud'>
                             <FormUser />
@@ -45,9 +47,9 @@ class _App extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        users: state.fetchedData.users,
-    }
+        fetchedData: state.fetchedData,
+    };
 }
 
-const App = connect(mapStateToProps, {getUsers: fetchData})(_App);
+const App = connect(mapStateToProps, {getData: fetchData})(_App);
 export default App;

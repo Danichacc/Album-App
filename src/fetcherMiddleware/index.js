@@ -10,16 +10,16 @@ export default function fetcherMiddleware({dispatch}) {
         let result = null;
 
         if (action.type === FETCH_DATA) {
-            const { url, start, success, failure } = action.payload;
+            const { token, start, success, failure } = action.payload;
 
             dispatch(start());
 
-            fetch(url)
+            fetch(token)
                 .then(response => response.json())
-                .then(result => dispatch(success(result, url)))
+                .then(result => dispatch(success(result, token)))
                 .catch(error => dispatch(failure(error)));
         } else if (action.type === ADD_DATA || action.type === EDIT_DATA || action.type === REMOVE_DATA) {
-            const { url, failure, entity } = action.payload;
+            const { token, url, success, failure, entity } = action.payload;
 
             fetch(url, {
                 method: action.type === ADD_DATA ? 'POST' :
@@ -29,11 +29,12 @@ export default function fetcherMiddleware({dispatch}) {
                 },
                 body: JSON.stringify(entity),
             }).then(response => response.json())
+                .then(result => dispatch(success(action.type, result, token)))
                 .catch(error => dispatch(failure(error)));
         } else {
             result = next(action);
         }
 
         return result;
-    }
+    };
 }

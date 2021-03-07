@@ -194,7 +194,7 @@ function mapStateToProps(state) {
         albums: state.fetchedData.albums,
         photos: state.fetchedData.photos,
         currentUser: state.currentUser,
-    }
+    };
 }
 
 export const FormUser = connect(mapStateToProps, {

@@ -11,9 +11,7 @@ export function reducer(state = defaultState, action) {
         case SET_ALBUM:
             return {
                 ...state,
-                userId: action.payload.userId,
-                id: action.payload.id,
-                title: action.payload.title,
+                ...action.payload,
             }
 
         default:
